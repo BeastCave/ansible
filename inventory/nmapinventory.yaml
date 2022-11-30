@@ -1,0 +1,6 @@
+---
+plugin: nmap
+address: 10.0.1.0/24
+strict: False
+ipv4: yes
+ports: no

@@ -1,0 +1,12 @@
+---
+all:
+  children:
+    kube:
+      hosts:
+        peter.beastcave.local:
+        rick.beastcave.local:
+        beth.beastcave.local:
+        summer.beastcave.local:
+        jerry.beastcave.local:
+      vars:
+        description: Linux servers for the Nunez family
