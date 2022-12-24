@@ -1,12 +1,23 @@
 ---
 all:
   children:
-    kube:
+    kubecluster:
       hosts:
-        peter.beastcave.local:
-        rick.beastcave.local:
-        beth.beastcave.local:
-        summer.beastcave.local:
-        jerry.beastcave.local:
+        rick:
+          ansible_host: 192.168.2.5
+        beth:
+          ansible_host: 192.168.2.11
+        summer:
+          ansible_host: 192.168.2.13
+        jerry:
+          ansible_host: 192.168.2.12
       vars:
-        description: Linux servers for the Nunez family
+        description: All Kube Machines
+    raspberrypi:
+      hosts:
+        beth:
+        summer:
+        jerry:
+    intel:
+        hosts:
+          rick:

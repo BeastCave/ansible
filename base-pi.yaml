@@ -1,0 +1,34 @@
+---
+- name: Create ansible user with passwordless sudo
+  hosts: raspberrypi
+  remote_user: ubuntu 
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: Add Ansible admin user
+      user:
+        name: ansible 
+        shell: /bin/bash
+
+    - name: Create sudo file
+      file:
+        path: /etc/sudoers.d/ansible
+        state: touch
+
+    - name: Give ansible user passwordless sudo
+      lineinfile:
+        path: /etc/sudoers.d/ansible
+        state: present
+        line: 'ansible ALL=(ALL:ALL) NOPASSWD: ALL'
+
+    - name: Set authorized key taken from file
+      authorized_key:
+        user: ansible
+        state: present
+        key: "{{ lookup('file', '~/.ssh/primary.pub') }}"
+
+    - name: Install linux-modules-extra-raspi
+      ansible.builtin.package:
+        name: linux-modules-extra-raspi
+        state: present

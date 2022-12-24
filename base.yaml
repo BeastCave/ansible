@@ -1,0 +1,28 @@
+---
+- name: Base Setup for All Systems
+  hosts: kubecluster
+  remote_user: ansible 
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: Add cookytime user
+      ansible.builtin.user:
+        name: cookytime
+        comment: Glen Cook
+        groups: adm
+        create_home: yes
+    - name: "Add authorized keys"
+      authorized_key:
+        user: cookytime
+        key: "{{ lookup('file', 'files/primary.pub') }}"
+    - name: Create sudo file
+      file:
+        path: /etc/sudoers.d/cookytime
+        state: touch
+
+    - name: Give ansible user passwordless sudo
+      lineinfile:
+        path: /etc/sudoers.d/cookytime
+        state: present
+        line: 'cookytime ALL=(ALL:ALL) NOPASSWD: ALL'
