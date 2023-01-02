@@ -2,6 +2,9 @@
 - name: Create ansible user with passwordless sudo
   hosts: pi
   tasks:
+    - name: Collect facts
+      setup:
+      
     - name: Add Ansible admin user
       user:
         name: ansible 
