@@ -1,6 +1,6 @@
 ---
 - name: Base Setup for All Systems
-  hosts: kubecluster
+  hosts: all
   remote_user: ansible 
   become: yes
   become_user: root
@@ -21,7 +21,7 @@
         path: /etc/sudoers.d/cookytime
         state: touch
 
-    - name: Give ansible user passwordless sudo
+    - name: Give cookytime user passwordless sudo
       lineinfile:
         path: /etc/sudoers.d/cookytime
         state: present
