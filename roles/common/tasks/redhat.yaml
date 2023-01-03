@@ -1,0 +1,7 @@
+---
+- name: install mDNS responder
+  ansible.builtin.dnf:
+    name: 
+      - nss-mdns 
+      - avahi
+    state: latest

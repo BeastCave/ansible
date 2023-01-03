@@ -36,3 +36,7 @@
     state: present
     user: cookytime
     commands: ALL
+
+- name: Install the correct web server for RHEL
+  import_tasks: redhat.yaml
+  when: ansible_facts['os_family']|lower == 'redhat'

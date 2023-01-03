@@ -1,6 +1,0 @@
----
-- name: Example playbook with auto reboot
-  exploide.dnf-automatic:
-    dnf_automatic_reboot: true, dnf
-    automatic_reboot_time: "04:00" 
-    
