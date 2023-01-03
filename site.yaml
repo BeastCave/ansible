@@ -1,0 +1,5 @@
+---
+- name: Install Base for machines
+  hosts: all
+  roles:
+     - common

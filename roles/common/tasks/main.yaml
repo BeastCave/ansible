@@ -1,0 +1,49 @@
+---
+- name: Collect facts
+  ansible.builtin.setup:
+
+- name: Add Ansible admin user
+  ansible.builtin.user:
+    name: ansible
+    shell: /bin/bash
+
+- name: Create sudo file
+  ansible.builtin.file:
+    path: /etc/sudoers.d/ansible
+    state: touch
+    mode: 0600
+
+- name: Give ansible user passwordless sudo
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/ansible
+    state: present
+    line: 'ansible ALL=(ALL:ALL) NOPASSWD: ALL'
+
+- name: Set authorized key taken from file
+  ansible.posix.authorized_key.authorized_key:
+    user: ansible
+    state: present
+    key: "{{ lookup('url', 'https://stuff.beastcave.net/keys/ansible.keys') }}"
+    
+- name: Add cookytime user
+  ansible.builtin.user:
+    name: cookytime
+    comment: Glen Cook
+    groups: adm
+- name: "Add authorized keys"
+  ansible.posix.authorized_key:
+    user: cookytime
+    key: "{{ lookup('url', 'https://stuff.beastcave.net/keys/cookytime.keys') }}"
+    
+- name: Create sudo file
+  ansible.builtin.file:
+    path: /etc/sudoers.d/cookytime
+    state: touch
+    mode: 0600
+
+- name: Give cookytime user passwordless sudo
+  ansible.builtin.lineinfile:
+    path: /etc/sudoers.d/cookytime
+    state: present
+    line: 'cookytime ALL=(ALL:ALL) NOPASSWD: ALL'
+    mode: 0600
