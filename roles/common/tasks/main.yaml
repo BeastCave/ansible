@@ -5,7 +5,6 @@
 - name: Add Ansible admin user
   ansible.builtin.user:
     name: ansible
-    state:
     shell: /bin/bash
 
 - name: Add sudo ansible
