@@ -1,23 +1,7 @@
 ---
 all:
-  children:
-    kubecluster:
-      hosts:
-        rick:
-          ansible_host: 192.168.2.5
-        beth:
-          ansible_host: 192.168.2.11
-        summer:
-          ansible_host: 192.168.2.13
-        jerry:
-          ansible_host: 192.168.2.12
-      vars:
-        description: All Kube Machines
-    raspberrypi:
-      hosts:
-        beth:
-        summer:
-        jerry:
-    intel:
-        hosts:
-          rick:
+  hosts:
+    rick:
+      ansible_host: 192.168.2.5
+    beth:
+      ansible_host: 192.168.2.11
