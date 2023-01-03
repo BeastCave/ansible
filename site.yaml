@@ -3,4 +3,4 @@
   hosts: all
   roles:
      - common
-     - dnf-autoupate
+     - dnf-autoupdate
