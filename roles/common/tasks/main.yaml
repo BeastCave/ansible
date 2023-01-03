@@ -2,6 +2,21 @@
 - name: Collect facts
   ansible.builtin.setup:
 
+- name: Ensure group "libvirt" exists
+  ansible.builtin.group:
+    name: libvirt
+    state: present
+
+- name: Ensure group "docker" exists
+  ansible.builtin.group:
+    name: docker
+    state: present
+
+- name: Ensure group "frr" exists
+  ansible.builtin.group:
+    name: frr
+    state: present
+
 - name: Add Ansible admin user
   ansible.builtin.user:
     name: ansible
