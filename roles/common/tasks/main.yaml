@@ -31,9 +31,9 @@
     user: cookytime
     key: "{{ lookup('url', 'https://stuff.beastcave.net/keys/cookytime.keys') }}"
 
-- name: Add sudo ansible
+- name: Add sudo cookytime
   community.general.sudoers:
-    name: ansible
+    name: cookytime
     state: present
     user: ansible
     commands: ALL
