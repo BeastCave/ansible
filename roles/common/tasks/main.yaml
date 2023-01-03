@@ -34,5 +34,5 @@
   community.general.sudoers:
     name: cookytime
     state: present
-    user: ansible
+    user: cookytime
     commands: ALL
