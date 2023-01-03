@@ -6,6 +6,7 @@
   ansible.builtin.user:
     name: ansible
     shell: /bin/bash
+    groups: docker,libvirt,frr
 
 - name: Add sudo ansible
   community.general.sudoers:
@@ -24,6 +25,7 @@
   ansible.builtin.user:
     name: cookytime
     comment: Glen Cook
+    groups: docker,libvirt,frr
 
 - name: "Add authorized keys"
   ansible.posix.authorized_key:
