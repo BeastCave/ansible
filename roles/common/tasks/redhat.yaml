@@ -1,10 +1,4 @@
 ---
-- name: install mDNS responder
-  ansible.builtin.dnf:
-    name: 
-      - avahi
-    state: latest
-
 - name: Install docker repos
   get_url:
     url: https://download.docker.com/linux/centos/docker-ce.repo
@@ -17,6 +11,12 @@
       - docker-ce
       - docker-ce-cli 
       - containerd.io
+
+- name: Make sure a service docker is running
+  ansible.builtin.systemd:
+    state: started
+    name: docker
+    enabled: yes
 
 - name: Autoremove unneeded packages installed as dependencies
   ansible.builtin.dnf:

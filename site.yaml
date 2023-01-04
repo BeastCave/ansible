@@ -4,4 +4,3 @@
   become: true
   roles:
     - common
-    - { role: exploide.dnf-automatic, dnf_automatic_reboot: true, dnf_automatic_reboot_time: "04:00" }
