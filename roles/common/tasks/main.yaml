@@ -4,50 +4,43 @@
 
 - name: Ensure base groups exists
   ansible.builtin.group:
-    name: "{{ item }}" 
+    name: "{{ item }}"
     state: present
   with_items:
-     - docker
-     - libvirt
-     - frr
+    - docker
+    - libvirt
+    - frr
 
 - name: Add Ansible admin user
   ansible.builtin.user:
     name: ansible
     shell: /bin/bash
-    groups: docker,libvirt,frr
-
-- name: Add sudo ansible
-  community.general.sudoers:
-    name: ansible
-    state: present
-    user: ansible
-    commands: ALL
-
-- name: Set authorized key taken from file
-  ansible.posix.authorized_key.authorized_key:
-    user: ansible
-    state: present
-    key: "{{ lookup('url', 'https://stuff.beastcave.net/keys/ansible.keys') }}"
+    groups: wheel
 
 - name: Add cookytime user
   ansible.builtin.user:
     name: cookytime
     comment: Glen Cook
-    groups: docker,libvirt,frr
+    groups: docker,frr,wheel,libvirt
+
+- name: "Set authorized key taken from file"
+  ansible.posix.authorized_key.authorized_key:
+    user: ansible
+    state: present
+    key: "{{ lookup('url', 'https://stuff.beastcave.net/keys/ansible.keys') }}"
 
 - name: "Add authorized keys"
   ansible.posix.authorized_key:
     user: cookytime
     key: "{{ lookup('url', 'https://stuff.beastcave.net/keys/cookytime.keys') }}"
 
-- name: Add sudo cookytime
+- name: "Allow Cookytime Sudo"
   community.general.sudoers:
     name: cookytime
     state: present
     user: cookytime
     commands: ALL
 
-- name: Install the correct web server for RHEL
-  import_tasks: redhat.yaml
-  when: ansible_facts['os_family']|lower == 'redhat'
+- name: "Install the correct web server for RHEL"
+  ansible.builtin.import_tasks: redhat.yaml
+  when: ansible_facts['os_family'] == 'RedHat'

@@ -1,7 +1,4 @@
 ---
 all:
   hosts:
-    rick:
-      ansible_host: 192.168.2.5
-    beth:
-      ansible_host: 192.168.2.11
+    docker.beastcave.lan:

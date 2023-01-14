@@ -1,0 +1,19 @@
+---
+- name: Install docker repos
+  ansible.builtin.get_url:
+    url: https://download.docker.com/linux/centos/docker-ce.repo
+    dest: /etc/yum.repos.d/docker-ce.repo
+    mode: 0644
+
+- name: Install docker-ce
+  ansible.builtin.dnf:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+
+- name: Make sure a service docker is running
+  ansible.builtin.systemd:
+    state: started
+    name: docker
+    enabled: true

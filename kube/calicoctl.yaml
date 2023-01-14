@@ -1,6 +1,0 @@
----
-- hosts: kube
-  become: yes
-
-  roles:
-    - andrewrothstein.calicoctl
