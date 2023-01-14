@@ -1,6 +1,5 @@
 ---
 - name: Install Base for machines
-  hosts: localhost
   become: true
   roles:
     - common
