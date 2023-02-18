@@ -15,13 +15,13 @@
   ansible.builtin.user:
     name: ansible
     shell: /bin/bash
-    groups: wheel
+    groups: adm
 
 - name: Add cookytime user
   ansible.builtin.user:
     name: cookytime
     comment: Glen Cook
-    groups: docker,frr,wheel,libvirt
+    groups: docker,frr,adm,libvirt
 
 - name: "Set authorized key taken from file"
   ansible.posix.authorized_key.authorized_key:
@@ -44,3 +44,7 @@
 - name: "Install the correct web server for RHEL"
   ansible.builtin.import_tasks: redhat.yaml
   when: ansible_facts['os_family'] == 'RedHat'
+
+- name: "Run Ubuntu Tasks"
+  ansible.builtin.import_tasks: ubuntu.yaml
+  when: ansible_facts['os_family'] == 'Debian'
