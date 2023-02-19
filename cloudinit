@@ -1,0 +1,11 @@
+ssh_pwauth: false
+
+users:
+- name: ansible
+  gecos: Ansible User
+  groups: users,admin,wheel
+  sudo: ALL=(ALL) NOPASSWD:ALL
+  shell: /bin/bash
+  lock_passwd: true
+  ssh_authorized_keys:
+  - "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDXKSk6xcUpdyduyAcZABNWdeZiWTOItpK/1A8BXUV6fB8OYtCYaimCOEJoFy7DXkgZotlb5kvY4kOGqTJUGEUHf0J5BMjNfu4r2aEAqP+Y3SpumaQ2Worxuq0T0NZ7YmdBLZBaWp4UWd/JO+Cy9uxhT4aeBcRvOWtjeCaQGUpiJHLcrFpIsQBIbENY9WkXYQqqSJwV/hCz/Tb++CJ4db+esqlp4M/kCOZOrAAWvSe5T7/knHnG5H3HoOLORnBTFuSCgtj0F3ymjlEm3lq3J70idJNgtDXFKGjCAULL2ZmBr4uoXPMnuImykSF7LqYjZBcg5nvBtJKdnbBtd4SrWEFoaySYQsfoUsVss20dOEjcXm7Z5NfDhWrKl/NqP9xy2l63nww0HNUiRN1h1aAAreLYZmhYpfrp0qwLBUPR183uD45qbpiZLpbDI7zWctC29ijt8Ug/JjSfWW2CsXnLUswEafEwo63XaK9Myl3XUwInWY7jlvU+cO/jK6pBUoQ8qm7AZ75PrLLGe2VOymqA9W25VDFVx/5kXZsjjd5iZPYyln4ODyTkxnguoag1/qLQI5jTVGlGcd+R9f3VBHGNjv9Xifce3uloO5UCNp5q5jrDwEtpiiVhgU66kzJnFvfVd+F56JXRf3oZAt2cIUO2elAkIWXi9kEfCYEoXJmpdvwNqw=="
