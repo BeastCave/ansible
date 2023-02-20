@@ -1,6 +1,7 @@
 ---
 - name: Install dnsmasq for machines
-  hosts: all
+  hosts: summer.glencook.tech
+  become: true
   pre_tasks:
   - name: Instll dnsmasq
     ansible.builtin.package:
