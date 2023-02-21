@@ -1,13 +1,15 @@
 all:
   hosts:
-    rick.glencook.tech:
-    pihole.glencook.tech:
-      ansible_user: pi
-      ansible_host: 192.168.1.67
-    docketstuff.glencook.tech:
+    rick.int.glencook.tech:
+      ansible_user: ansible
+      ansible_host: 192.168.2.15
+    docketstuff.int.glencook.tech:
       ansible_user: ansible
       ansible_host: 10.162.105.248
-    elk.glencook.tech:
+    elk.int.glencook.tech:
       ansible_user: ansible
-      ansible_host: 192.168.2.21
+      ansible_host: 10.162.105.41
+    pi-hole.int.glencook.tech:
+      ansible_user: pi
+      ansible_host: 192.168.1.5
 

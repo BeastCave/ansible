@@ -1,6 +1,11 @@
 - name: Collect facts
   ansible.builtin.setup:
 
+- name: Common packages
+  ansible.builtin.package:
+    name: zsh
+    state: present
+
 - name: Ensure base groups exists
   ansible.builtin.group:
     name: "{{ item }}"
@@ -21,6 +26,7 @@
     name: cookytime
     comment: Glen Cook
     groups: docker,frr,adm,libvirt
+    shell: /usr/bin/zsh
 
 - name: "Set authorized key taken from file"
   ansible.posix.authorized_key.authorized_key:
