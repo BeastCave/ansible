@@ -3,14 +3,14 @@
   hosts: summer.glencook.tech
   become: true
   pre_tasks:
-  - name: Instll dnsmasq
-    ansible.builtin.package:
-      name: dnsmasq
-      state: present
-  - name: create resolv-file for dnsmasq
-    ansible.builtin.copy:
-      content: |
-        nameserver 172.64.36.1
-        nameserver 172.64.36.2
-      dest: /etc/resolv.dnsmasq
-      mode: '0666'
+    - name: Instll dnsmasq
+      ansible.builtin.package:
+        name: dnsmasq
+        state: present
+    - name: Create resolv-file for dnsmasq
+      ansible.builtin.copy:
+        content: |
+          nameserver 172.64.36.1
+          nameserver 172.64.36.2
+        dest: /etc/resolv.dnsmasq
+        mode: '0666'
