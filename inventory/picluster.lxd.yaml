@@ -1,3 +1,4 @@
 plugin: community.general.lxd
-url: unix:/var/snap/lxd/common/lxd/unix.socket
-state: RUNNING
+url: https://pi1.local:8443
+client_cert: /home/cookytime/.config/lxc/client.crt
+client_key: /home/cookytime/.config/lxc/client.key
