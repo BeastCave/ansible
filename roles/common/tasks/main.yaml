@@ -6,26 +6,15 @@
     name: zsh
     state: present
 
-- name: Ensure base groups exists
-  ansible.builtin.group:
-    name: "{{ item }}"
-    state: present
-  with_items:
-  - docker
-  - libvirt
-  - frr
-
 - name: Add Ansible admin user
   ansible.builtin.user:
     name: ansible
     shell: /bin/bash
-    groups: adm
 
 - name: Add cookytime user
   ansible.builtin.user:
     name: cookytime
     comment: Glen Cook
-    groups: docker,frr,adm,libvirt
     shell: /usr/bin/zsh
 
 - name: "Set authorized key taken from file"
