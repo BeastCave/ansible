@@ -1,6 +1,3 @@
-- name: Collect facts
-  ansible.builtin.setup:
-
 - name: Common packages
   ansible.builtin.package:
     name: zsh

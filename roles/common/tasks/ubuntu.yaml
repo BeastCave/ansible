@@ -1,8 +1,4 @@
 ---
-- namne: Install extra Packages
-  ansible.builtin.apt:
-    name:
-      - 
 - name: Update all packages to their latest version
   ansible.builtin.apt:
     name: "*"
@@ -12,7 +8,7 @@
     autoremove: true
 
 - name: Install LDX-MicroCeph for Pi Cluster
-  snap:
+  community.general.snap:
     name:
       - lxd
       - microceph
@@ -25,4 +21,3 @@
       - bridge-utils
       - open-iscsi
   when: "'pi' in groups_names"
-
