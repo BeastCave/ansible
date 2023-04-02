@@ -1,4 +1,8 @@
 ---
+- namne: Install extra Packages
+  ansible.builtin.apt:
+    name:
+      - 
 - name: Update all packages to their latest version
   ansible.builtin.apt:
     name: "*"
@@ -20,3 +24,5 @@
       - linux-modules-extra-raspi
       - bridge-utils
       - open-iscsi
+  when: "'pi' in groups_names"
+

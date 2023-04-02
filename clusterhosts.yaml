@@ -1,0 +1,39 @@
+# An example for creating a Ubuntu container and install python
+- hosts: pi1.local
+  name: Install Plex
+  tasks:
+    - name: Create a started container
+      community.general.lxd_container:
+        name: plex
+        ignore_volatile_options: true
+        state: started
+        source:
+          type: image
+          mode: pull
+          server: https://images.linuxcontainers.org
+          protocol: simplestreams # if you get a 404, try setting protocol: simplestreams
+          alias: debian/buster
+        profiles: ["default"]
+        wait_for_container: true
+        wait_for_ipv4_addresses: true
+        timeout: 600
+
+- hosts: pi1.local
+  name: Install Sonarr
+  tasks:
+    - name: Create a started container
+      community.general.lxd_container:
+        name: sonarr
+        ignore_volatile_options: true
+        state: started
+        source:
+          type: image
+          mode: pull
+          server: https://images.linuxcontainers.org
+          protocol: simplestreams # if you get a 404, try setting protocol: simplestreams
+          alias: debian/buster
+        profiles: ["default"]
+        wait_for_container: true
+        wait_for_ipv4_addresses: true
+        timeout: 600
+       
