@@ -18,12 +18,12 @@
   ansible.posix.authorized_key.authorized_key:
     user: ansible
     state: present
-    key: "{{ lookup('url', 'https://stuff.beastcave.net/keys/ansible.keys') }}"
+    key: "{{ lookup('url', 'https://github.com/cookytime.keys') }}"
 
 - name: "Add authorized keys"
   ansible.posix.authorized_key:
     user: cookytime
-    key: "{{ lookup('url', 'https://stuff.beastcave.net/keys/cookytime.keys') }}"
+    key: "{{ lookup('url', 'https://github.com/cookytime.keys') }}"
 
 - name: "Allow Cookytime Sudo"
   community.general.sudoers:

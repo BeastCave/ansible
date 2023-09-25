@@ -1,0 +1,10 @@
+all:
+  children:
+    kube:
+      hosts:
+        control01:
+        worker01:
+        worker02:
+    containers:
+      hosts:
+        vscode:

@@ -1,23 +1,12 @@
 ---
-- name: Update all packages to their latest version
-  ansible.builtin.apt:
-    name: "*"
-
 - name: Remove dependencies that are no longer required
   ansible.builtin.apt:
     autoremove: true
 
-- name: Install LDX-MicroCeph for Pi Cluster
-  community.general.snap:
-    name:
-      - lxd
-      - microceph
-  when: "'pi' in group_names"
-
-- name: Install extra packages for pi1.local
+- name: Install NFS
   ansible.builtin.apt:
-    name:
-      - linux-modules-extra-raspi
-      - bridge-utils
-      - open-iscsi
-  when: "'pi' in groups_names"
+    name: 
+      - nfs-client
+      - nfs-common
+
+    
