@@ -9,4 +9,27 @@
       - nfs-client
       - nfs-common
 
+- name: Make sure the folder exists (Debian, Ubuntu)
+  file:
+    path: /usr/local/share/ca-certificates
+    state: directory
+
+# Note that the .crt is actually a .pem renamed
+- name: Copy Root CA 
+  ansible.builtin.get_url:
+    url: "https://glencooktechpublickeys.blob.core.windows.net/glencooktech-ca/root_ca.crt"
+    dest: "/usr/local/share/ca-certificates/glencooktech.crt"
+    mode: 0755
+  register: result
+
+- name: Copy Intermediate CA
+  ansible.builtin.get_url:
+    url: "https://glencooktechpublickeys.blob.core.windows.net/glencooktech-ca/intermediate_ca.crt"
+    dest: "/usr/local/share/ca-certificates/glencooktech-intermediate.crt"
+    mode: 0755
+  register: result
+
+- name: Update CA Trust (Debian, Ubuntu)
+  command: update-ca-certificates
+  when: result is changed
     

@@ -8,3 +8,5 @@ all:
     containers:
       hosts:
         vscode:
+        ca:
+        adguard:

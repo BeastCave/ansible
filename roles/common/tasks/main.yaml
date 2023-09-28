@@ -17,13 +17,16 @@
 - name: "Set authorized key taken from file"
   ansible.posix.authorized_key.authorized_key:
     user: ansible
+    exclusive: true
     state: present
-    key: "{{ lookup('url', 'https://github.com/cookytime.keys') }}"
+    key: "{{ lookup('url', 'https://glencooktechpublickeys.blob.core.windows.net/publicssh/ansible.pub') }}"
 
 - name: "Add authorized keys"
   ansible.posix.authorized_key:
     user: cookytime
-    key: "{{ lookup('url', 'https://github.com/cookytime.keys') }}"
+    exclusive: true
+    state: present
+    key: "{{ lookup('url', 'https://glencooktechpublickeys.blob.core.windows.net/publicssh/primary.pub') }}"
 
 - name: "Allow Cookytime Sudo"
   community.general.sudoers:
