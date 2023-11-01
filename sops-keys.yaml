@@ -1,0 +1,29 @@
+---
+- name: Create sops-encrypted private key
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - block:
+        - name: Create private key
+          community.crypto.openssl_privatekey_pipe:
+            size: 2048
+            content: >-
+              {{ lookup(
+                    'community.sops.sops',
+                    'keys/private_key.pem.sops',
+                    empty_on_not_exist=true
+                 ) }}
+          no_log: true  # Always use this with openssl_privatekey_pipe!
+          register: private_key
+
+        - name: Write encrypted key to disk
+          community.sops.sops_encrypt:
+            path: keys/private_key.pem.sops
+            content_text: "{{ private_key.privatekey }}"
+          when: private_key is changed
+
+      always:
+        - name: Wipe private key from Ansible's facts
+          # This is particularly important if the playbook doesn't end here!
+          set_fact:
+            private_key: ''
