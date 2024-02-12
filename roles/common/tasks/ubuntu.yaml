@@ -17,14 +17,14 @@
 # Note that the .crt is actually a .pem renamed
 - name: Copy Root CA 
   ansible.builtin.get_url:
-    url: "https://pub-e89ede954fc048a7824791610744dbdb.r2.dev/root_ca.crt"
+    url: "https://bucket.glencook.tech/root_ca.crt"
     dest: "/usr/local/share/ca-certificates/glencooktech.crt"
     mode: 0755
   register: result
 
 - name: Copy Intermediate CA
   ansible.builtin.get_url:
-    url: "https://pub-e89ede954fc048a7824791610744dbdb.r2.dev/intermediate_ca.crt"
+    url: "https://bucket.glencook.tech/intermediate_ca.crt"
     dest: "/usr/local/share/ca-certificates/glencooktech-intermediate.crt"
     mode: 0755
   register: result
