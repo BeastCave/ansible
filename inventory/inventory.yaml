@@ -1,16 +1,9 @@
 all:
   children:
-    kube:
-      hosts:
-        control01.int.glencook.tech:
-        worker01.int.glencook.tech:
-        worker02.int.glencook.tech:
     containers:
       hosts:
-        vscode.int.glencook.tech:    
-        scraper.int.glencook.tech:
-          ansible_host: 192.168.1.131
+        coder.int.glencook.tech:    
+        n8n.int.glencook.tech:
     pi:
       hosts:
-        Dockstarter.int.glencook.tech:
-        ca.int.glencook.tech:
+         ca.int.glencook.tech:

@@ -3,12 +3,6 @@
   ansible.builtin.apt:
     autoremove: true
 
-- name: Install NFS
-  ansible.builtin.apt:
-    name: 
-      - nfs-client
-      - nfs-common
-
 - name: Make sure the folder exists (Debian, Ubuntu)
   file:
     path: /usr/local/share/ca-certificates
