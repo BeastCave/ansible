@@ -9,5 +9,6 @@ all:
         dockge.int.glencook.tech:
     pi:
       hosts:
-         ca.int.glencook.tech:
-         dns.int.glencook.tech:
+        ca.int.glencook.tech:
+        dns.int.glencook.tech:
+        jerry.int.glencook.tech:

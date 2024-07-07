@@ -3,7 +3,8 @@
   hosts: localhost
   gather_facts: false
   tasks:
-    - block:
+    - name: Create Key
+      block:
         - name: Create private key
           community.crypto.openssl_privatekey_pipe:
             size: 2048
@@ -25,5 +26,5 @@
       always:
         - name: Wipe private key from Ansible's facts
           # This is particularly important if the playbook doesn't end here!
-          set_fact:
+          ansible.builtin.set_fact:
             private_key: ''

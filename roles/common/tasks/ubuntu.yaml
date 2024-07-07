@@ -4,26 +4,33 @@
     autoremove: true
 
 - name: Make sure the folder exists (Debian, Ubuntu)
-  file:
+  ansible.builtin.file:
     path: /usr/local/share/ca-certificates
     state: directory
+    mode: "0755"
 
 # Note that the .crt is actually a .pem renamed
-- name: Copy Root CA 
+- name: Copy Root CA
   ansible.builtin.get_url:
     url: "https://bucket.glencook.tech/root_ca.crt"
     dest: "/usr/local/share/ca-certificates/glencooktech.crt"
-    mode: 0755
-  register: result
+    mode: "0755"
+  notify: 
+    - Update Root CA Trust (Debian, Ubuntu)
+  handlers:
+    - name: Update Root CA Trust (Debian, Ubuntu)
+      ansible.builtin.command: update-ca-certificates
+      when: result is changed
 
 - name: Copy Intermediate CA
   ansible.builtin.get_url:
     url: "https://bucket.glencook.tech/intermediate_ca.crt"
     dest: "/usr/local/share/ca-certificates/glencooktech-intermediate.crt"
-    mode: 0755
-  register: result
+    mode: "0755"
+  notify: 
+    - Update Intermediate CA Trust (Debian, Ubuntu)
 
-- name: Update CA Trust (Debian, Ubuntu)
-  command: update-ca-certificates
-  when: result is changed
-    
+  handlers:
+    - name: Update Intermediate CA Trust (Debian, Ubuntu)
+      ansible.builtin.command: update-ca-certificates
+      when: result is changed

@@ -7,7 +7,7 @@
       ansible.builtin.include_role:
         name: community.sops.install
       vars:
-        sops_version: 3.8.1  # per default installs the latest version
+        install_sops_version: 3.8.1  # per default installs the latest version
 
     # To use the lookup plugin, filter plugin, vars plugin, or the load_vars action,
     # you need sops installed on localhost:
@@ -15,4 +15,4 @@
       ansible.builtin.include_role:
         name: community.sops.install
       vars:
-        sops_install_on_localhost: true
+        install_sops_install_on_localhost: true
