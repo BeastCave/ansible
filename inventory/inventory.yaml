@@ -3,12 +3,11 @@ all:
     containers:
       hosts:
         n8n.int.glencook.tech:
-        postgres.int.glencook.tech:
         postgresql.int.glencook.tech:
         trilium.int.glencook.tech:
-        dockge.int.glencook.tech:
+        prometheus.int.glencook.tech:
+        grafana.int.glencook.tech:
     pi:
       hosts:
         ca.int.glencook.tech:
-        dns.int.glencook.tech:
-        jerry.int.glencook.tech:
+
