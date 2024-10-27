@@ -7,6 +7,10 @@ all:
         trilium.int.glencook.tech:
         prometheus.int.glencook.tech:
         grafana.int.glencook.tech:
+        dns.int.glencook.tech:
+        plex.int.glencook.tech:
+        warp.int.glencook.tech:
+        semphore.int.glencook.tech:
     pi:
       hosts:
         ca.int.glencook.tech:
