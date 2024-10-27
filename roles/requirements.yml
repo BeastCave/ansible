@@ -1,6 +1,8 @@
 collections:
   - name: ansible.posix
   - name: community.general
+  - name: community.crypto
+  - name: lantossl.general
 
 roles:
   - name: exploide.dnf-automatic
