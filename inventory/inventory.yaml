@@ -11,7 +11,9 @@ all:
         plex.int.glencook.tech:
         warp.int.glencook.tech:
         semphore.int.glencook.tech:
+        cockpit.int.glencook.tech:
+        apt-cacher-ng.int.glencook.tech:
+        pairdrop.int.glencook.tech:
     pi:
       hosts:
         ca.int.glencook.tech:
-

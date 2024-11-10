@@ -3,6 +3,7 @@ collections:
   - name: community.general
   - name: community.crypto
   - name: lantossl.general
+  - name: community.sops
 
 roles:
   - name: exploide.dnf-automatic
