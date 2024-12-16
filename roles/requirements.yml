@@ -8,3 +8,4 @@ collections:
 roles:
   - name: exploide.dnf-automatic
   - name: oefenweb.dnsmasq
+  - src: weareinteractive.apt

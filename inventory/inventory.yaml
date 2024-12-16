@@ -3,17 +3,18 @@ all:
     containers:
       hosts:
         n8n.int.glencook.tech:
+          ansible_host: 192.168.1.125
         postgresql.int.glencook.tech:
-        trilium.int.glencook.tech:
+        notes.int.glencook.tech:
         prometheus.int.glencook.tech:
-        grafana.int.glencook.tech:
         dns.int.glencook.tech:
         plex.int.glencook.tech:
         warp.int.glencook.tech:
-        semphore.int.glencook.tech:
-        cockpit.int.glencook.tech:
+        ansible.int.glencook.tech:
+          ansible_host: 192.168.1.127
         apt-cacher-ng.int.glencook.tech:
         pairdrop.int.glencook.tech:
+        openvas.int.glencook.tech:
     pi:
       hosts:
         ca.int.glencook.tech:

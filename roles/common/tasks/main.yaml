@@ -9,9 +9,9 @@
     name: ansible
     shell: /bin/bash
 
-- name: Add cookytime user
+- name: Add glen user
   ansible.builtin.user:
-    name: cookytime
+    name: glen
     comment: Glen Cook
     shell: /usr/bin/zsh
 
@@ -24,16 +24,16 @@
 
 - name: "Add authorized keys"
   ansible.posix.authorized_key:
-    user: cookytime
+    user: glen
     exclusive: true
     state: present
     key: "{{ lookup('url', 'https://pub-e89ede954fc048a7824791610744dbdb.r2.dev/primary.pub') }}"
 
-- name: "Allow Cookytime Sudo"
+- name: "Allow glen Sudo"
   community.general.sudoers:
-    name: cookytime
+    name: glen
     state: present
-    user: cookytime
+    user: glen
     commands: ALL
 
 - name: "Allow ansible Sudo"

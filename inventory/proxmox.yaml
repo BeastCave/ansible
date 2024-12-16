@@ -1,7 +1,7 @@
 plugin: community.general.proxmox
-url: http://pve.int.glencook.tech:8006
+url: https://pve.glencook.tech
 user: root@pam
-password: password
+password: BiteMeHard@002
 want_facts: true
 keyed_groups:
     # proxmox_tags_parsed is an example of a fact only returned when 'want_facts=true'

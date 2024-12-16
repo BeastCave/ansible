@@ -1,8 +1,15 @@
 ---
-- name: Keep OS Updated
-  hosts: all
-  # remote_user: root
-  gather_facts: true
-  become: true
+
+- hosts: all
+  become: yes
   roles:
-    - lantossl.general.keep_os_update
+    - weareinteractive.apt
+  vars:
+    apt_cache_valid_time: 7200
+    apt_packages:
+    - python3
+    - caddy
+    apt_unattended_upgrades_notify_error_only: no
+    apt_remove_recommends: yes
+    apt_remove_suggests: yes
+    apt_remove_purge: yes
