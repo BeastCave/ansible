@@ -20,6 +20,5 @@
         url: "https://bucket.glencook.tech/intermediate_ca.crt"
         dest: "/usr/local/share/ca-certificates/glencooktech-intermediate.crt"
         mode: "0755"
-        
     - name: Update CA Trust (Debian, Ubuntu)
       ansible.builtin.command: update-ca-certificates
